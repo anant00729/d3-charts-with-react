@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/bumbeishvili/d3-tip-for-v6@4/d3-tip.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Ninja Wonga</title>
+    <style></style>
+  </head>
+  <body class="grey darken-4">
+    <div class="nav z-depth-0">
+      <div class="section center">
+        <h3 class="white-text center">- The Dojo -</h3>
+      </div>
+    </div>
+
+    <div class="section center">
+      <p class="grey-text flow-text">A fitness tracker for ninjas</p>
+    </div>
+
+    <div class="container section">
+      <div class="row">
+        <div class="col s12 l5">
+          <button class="active" data-activity="cycling">Cycling</button>
+          <button data-activity="running">Running</button>
+          <button data-activity="swimming">Swimming</button>
+          <button data-activity="walking">Walking</button>
+        </div>
+        <div class="col s12 l6 push-l1">
+          <div class="canvas"></div>
+        </div>
+      </div>
+      <div class="row">
+        <form class="col m6 push-m3">
+          <p class="flow-text grey-text center">
+            How much <span>cycling</span> have you done today?
+          </p>
+          <input
+            type="text"
+            class="grey-text"
+            id="cycling"
+            placeholder="Distance in m"
+          />
+          <p class="center pink-text error text-lighten-1"></p>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyByEpix7bPR7EVRodgEYm4kq3XOXAbfa1s",
+        authDomain: "d3-charts-5d998.firebaseapp.com",
+        projectId: "d3-charts-5d998",
+        storageBucket: "d3-charts-5d998.appspot.com",
+        messagingSenderId: "905562692348",
+        appId: "1:905562692348:web:337cf98f5acbee685a9579",
+        measurementId: "G-4V2KBGDQYP",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      const db = firebase.firestore();
+      db.settings({ timestamptsInSnapshots: true });
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.7.0/d3.min.js"
+      integrity="sha512-cd6CHE+XWDQ33ElJqsi0MdNte3S+bQY819f7p3NUHgwQQLXSKjE4cPZTeGNI+vaxZynk1wVU3hoHmow3m089wA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"
+      integrity="sha512-wNH6xsp2n8CfB91nrBtfc4sfLwYPBMjSWVUwQOp60AYYXH6i8yCwuKFZ4rgK2i6pQek/b+bSyR7b01/922IBzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://unpkg.com/d3-v6-tip@1.0.6/build/d3-v6-tip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="index.js"></script>
+    <script src="graph.js"></script>
+  </body>
+</html>
