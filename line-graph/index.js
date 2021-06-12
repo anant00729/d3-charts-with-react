@@ -17,6 +17,7 @@ btns.forEach((btn) => {
 
     // set text of form span
     formAct.textContent = activity;
+    update(data);
   });
 });
 
