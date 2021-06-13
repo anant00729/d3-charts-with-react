@@ -1,28 +1,19 @@
-import react, { Component } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import DotD3Chart from "./DotD3Chart";
 
-class DotChartWrapper extends Component {
-  componentDidMount() {
-    this.setState({
-      chart: new DotD3Chart(
-        this.refs.chart,
-        this.props.data,
-        this.props.updateActiveName
-      ),
-    });
-  }
+const DotChartWrapper = ({ data, updateActiveName }) => {
+  const chartArea = useRef(null);
+  const [chart, setChart] = useState(null);
 
-  shouldComponentUpdate() {
-    return false;
-  }
+  useEffect(() => {
+    if (!chart) {
+      setChart(new DotD3Chart(chartArea.current, data, updateActiveName));
+    } else {
+      chart.update(data);
+    }
+  }, [chart, data]);
 
-  componentWillReceiveProps(nextProps) {
-    this.state.chart.update(nextProps.data);
-  }
-
-  render() {
-    return <div ref="chart"></div>;
-  }
-}
+  return <div className="chart-area" ref={chartArea}></div>;
+};
 
 export default DotChartWrapper;
